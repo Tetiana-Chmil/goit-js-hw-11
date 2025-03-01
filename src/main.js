@@ -1,5 +1,8 @@
 import { getImage } from './js/pixabay-api';
 import { galleryMarkup } from './js/render-functions';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+import errorIcon from '../img/error.svg';
 
 const form = document.querySelector('.form');
 
@@ -20,7 +23,18 @@ function handleSubmit(event) {
     getImage(input)
         .then(response => galleryMarkup(response))
         .catch(error => {
-            gallery.innerHTML = '<p>Something went wrong. Please, try again.</p>';
+            iziToast.show({
+                messageColor: '#FAFAFB',
+                messageSize: '16px',
+                backgroundColor: '#EF4040',
+                iconUrl: errorIcon,
+                transitionIn: 'bounceInLeft',
+                position: 'topRight',
+                displayMode: 'replace',
+                closeOnClick: true,
+                message: 'Something went wrong. Please, try again.',
+            });
+            gallery.innerHTML = '';
             console.log(error);
         });
 }
