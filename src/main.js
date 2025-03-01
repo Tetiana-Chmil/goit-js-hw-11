@@ -2,7 +2,7 @@ import { getImage } from './js/pixabay-api';
 import { galleryMarkup } from './js/render-functions';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-import errorIcon from '../img/error.svg';
+import errorIcon from './img/error.svg';
 
 const form = document.querySelector('.form');
 
